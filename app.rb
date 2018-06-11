@@ -71,7 +71,6 @@ get '/posts/:id' do
     
     #db에서 찾는다
     @post = Post.get(@id)
-    
     erb :'posts/show'
 end
 
