@@ -45,7 +45,8 @@ end
 
 #게시글을 모두 보여주는 곳
 get '/posts' do
-    @posts = Post.all
+    @posts = Post.all.reverse
+    # @posts = Post.all(order=> [:id.desc])
     erb :'posts/posts'
 end
 
@@ -63,9 +64,16 @@ get '/posts/create' do
 end
 
 
-
-
-
+#CRUD - Read
+get '/posts/:id' do
+    #id를 받아와서
+    @id = params[:id]
+    
+    #db에서 찾는다
+    @post = Post.get(@id)
+    
+    erb :'posts/show'
+end
 
 
 
