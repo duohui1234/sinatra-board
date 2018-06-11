@@ -1,9 +1,30 @@
+      <div class = "container mt-5">
       <h1>게시판 입니다</h1>
        <a href = "/posts/new">글 쓰러가기</a>
-           <% @posts.each do |p| %>
-           <%= p.title %>
-           <%= p.body %>
-           <%= p.id %>
-           <%= p.created_at %>
-           <% end %>
+
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">TITLE</th>
+      <th scope="col">CONTENT</th>
+      <th scope="col">DATE</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @posts.reverse.each do |p| %>    
+    <tr>
+      <th scope="row"><%= p.id %></th>
+      <td><%= p.title %></td>
+      <td><%= p.body%></td>
+      <td><%= p.created_at %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  
+</table>
+        
+        
+       </div>
 
