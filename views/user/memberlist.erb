@@ -1,4 +1,4 @@
-      <div class = "container mt-5">
+      <div class = "container mt-5 pr-5 pl-5">
           <div class = "text-center">
           <h3>회원리스트 보기</h3>
           </div>
@@ -14,7 +14,7 @@
       <th scope="col">Name</th>
       <th scope="col">Password</th>
       <th scope="col">Email</th>
-      <th scope="col">Date</th></th>
+      <th scope="col">삭제하기</th>
     </tr>
   </thead>
   
@@ -25,13 +25,12 @@
       <td><%= u.username %></td>
       <td><%= u.password %></td>
       <td><%= u.email %></td>
-      <td><%= u.created_at %></td>
+      <td><a href = "/user/delete/<%= u.id %>">삭제</a></td>
     </tr>
     <% end %>
   </tbody>
   
 </table>
         
-        
-       </div>
+</div>
 

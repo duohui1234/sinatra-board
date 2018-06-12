@@ -108,3 +108,14 @@ get '/user/list' do
     erb :'user/memberlist'
 end
 
+
+
+get '/user/delete/:id' do 
+    @id = params[:id]
+    User.get(@id).destroy
+    @user = User.all.reverse
+    erb :'user/memberlist'
+end
+
+
+
