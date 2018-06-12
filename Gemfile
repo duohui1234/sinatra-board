@@ -1,9 +1,12 @@
-source 'https://rubygems.org'
+source 'https://rubygems.org
 gem 'sinatra'
 gem 'sinatra-reloader'
 gem 'datamapper'
-#gem 'json', '~>1.6'
 gem 'bcrypt'
+gem 'json', '~>1.6'
+gem 'rack'
+
+
 
 
 group :production do
