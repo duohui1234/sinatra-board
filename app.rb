@@ -2,6 +2,7 @@ gem 'json', '~>1.6'
 require 'sinatra'
 require 'sinatra/reloader'
 require './model.rb'
+require 'bcrypt'
 
 
 before do 
@@ -67,6 +68,7 @@ get '/posts/edit/:id' do
      erb :'posts/edit'
 end
 
+
 get '/posts/update/:id' do
     @id = params[:id]
     Post.get(@id).update(title: params[:title], body: params[:body])
@@ -74,3 +76,35 @@ get '/posts/update/:id' do
     # erb :'/posts/update'
     redirect '/posts/'+@id
 end
+
+
+get '/user/join' do 
+    erb :'user/join_form'
+end
+
+
+get '/user/signup' do
+
+    
+ # 비밀번호와 비밀번호 체크가 다르면 루트 페이지로 돌아감
+   if params[:pwd] != params[:pwdcheck]
+         redirect '/'
+
+   else    
+     if User.create(username: params[:username], email: params[:email], password: BCrypt::Password.create(params[:pwd]))
+        @msg = "회원가입 성공"
+     else
+         @msg = "회원가입 실패"
+     end
+  end     
+     
+    erb :'user/signup_check'
+end
+
+
+
+get '/user/list' do 
+    @user = User.all.reverse
+    erb :'user/memberlist'
+end
+
