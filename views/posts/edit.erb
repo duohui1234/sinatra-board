@@ -1,0 +1,25 @@
+<div class= "container mt-5">
+       <span class = "text-center"><h1 >게시판 입니다</h1></span>
+       <a href = "/">홈으로 가기</a>
+       
+
+       
+ <form action = "/posts/update/<%= @post.id %>">
+     
+  <div class="form-group">
+    <label for="exampleInputEmail1">제목</label>
+    <input type="text" value ="<%= @post.title %>" name = "title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="제목을 입력해주세요">
+  </div>
+  
+  <div class="form-group">
+    <label for="exampleInputPassword1">내용</label>
+    <input type="text" value ="<%=@post.body %>" name = "body" class="form-control" id="exampleInputPassword1" placeholder="내용을 입력해주세요">
+  </div>
+  
+  
+  <button type="submit" class="btn btn-primary">수정하기</button>
+</form>
+
+
+</div>
+       

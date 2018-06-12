@@ -75,4 +75,24 @@ get '/posts/:id' do
 end
 
 
+get '/posts/destroy/:id' do
+   @id = params[:id]
+   Post.get(@id).destroy
+   erb :'/posts/destroy'
+end
 
+
+
+get '/posts/edit/:id' do
+     @id = params[:id]
+     @post = Post.get(@id)
+     erb :'posts/edit'
+end
+
+get '/posts/update/:id' do
+    @id = params[:id]
+    Post.get(@id).update(title: params[:title], body: params[:body])
+    # @post = Post.get(@id)  
+    # erb :'/posts/update'
+    redirect '/posts/'+@id
+end
